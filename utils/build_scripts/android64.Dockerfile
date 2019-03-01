@@ -54,7 +54,7 @@ RUN set -ex \
 ENV HOST_PATH $PATH
 ENV PATH $TOOLCHAIN_DIR/aarch64-linux-android/bin:$TOOLCHAIN_DIR/bin:$PATH
 
-ARG NPROC=1
+ARG NPROC=2
 
 # Build iconv for lib boost locale
 ENV ICONV_VERSION 1.15
