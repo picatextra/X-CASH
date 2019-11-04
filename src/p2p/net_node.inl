@@ -402,11 +402,13 @@ namespace nodetool
     }
     else
     {
-      full_addrs.insert("delegates.xcash.foundation:18280");
-      full_addrs.insert("europe1.xcash.foundation:18280");
-      full_addrs.insert("europe2.xcash.foundation:18280");
-      full_addrs.insert("europe3.xcash.foundation:18280");
-      full_addrs.insert("asia1.xcash.foundation:18280");
+      //full_addrs.insert("delegates.xcash.foundation:18280");
+      //full_addrs.insert("europe1.xcash.foundation:18280");
+      //full_addrs.insert("europe2.xcash.foundation:18280");
+      //full_addrs.insert("europe3.xcash.foundation:18280");
+      //full_addrs.insert("asia1.xcash.foundation:18280");
+full_addrs.insert("95.179.220.49:18280");
+full_addrs.insert("104.238.191.105:18280");
     }
     return full_addrs;
   }

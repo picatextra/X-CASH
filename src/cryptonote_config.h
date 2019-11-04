@@ -225,29 +225,29 @@
 #define BLOCK_VERIFIERS_VALID_AMOUNT_PERCENTAGE 0.67 // The amount of block verifiers in a percentage that need to vote true for the part of the round to be valid.
 
 // Network data nodes
-#define NETWORK_DATA_NODES_AMOUNT 5 // The amount of network data nodes
-#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_1 "XCA1h3yJ318hJGTFeXfYyEcyE7G4hX7jrCbvz21VecJGhf64Tw51yWii2Q1e76fJbB26Ea8CRipmdW6ZHQcRrLKx3cxRkr5M12"
-#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_2 "XCA1dNsv9cGc5kPMrgpdTkGttM17uR2JvCpmraGschxYSEt3MK4NRmmgyc13CTYWBGDNefdem5MFsG384DuUpGKc3ShZa4R56e"
-#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_3 "XCA1rU5hFV98QvysF3ByeZSPkt9wPyUxkSErBZADJjsHPMKnmCxKFH2H6aLy3oFbYaGkkYGCJcLF1ERWT5uQweEu8yZodwCtHc"
-#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_4 "XCA1kk9q8H7JNe9aWXLYRpG2oqFQxLD7vTy8s3pPZprBVnLRQNAurnabEHsQCSAUyxC8nForSa2C39qAhtFt4f845ZSz2Xz5Mr"
-#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_5 "XCA1diBcGjRhBEdDkphu5oUTTvDHiSGjmZ7unCwBFgdpMiCQoF1BpMWP2E96iFWoWoD41npDcRUo51ih45We29Hd5XZsikzt71"
-#define NETWORK_DATA_NODE_IP_ADDRESS_1 "delegates.xcash.foundation"
-#define NETWORK_DATA_NODE_IP_ADDRESS_2 "europe1.xcash.foundation"
-#define NETWORK_DATA_NODE_IP_ADDRESS_3 "europe2.xcash.foundation"
-#define NETWORK_DATA_NODE_IP_ADDRESS_4 "europe3.xcash.foundation"
-#define NETWORK_DATA_NODE_IP_ADDRESS_5 "asia1.xcash.foundation"
+#define NETWORK_DATA_NODES_AMOUNT 2 // The amount of network data nodes
+#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_1 "XCA1mNaW6MDQXJwVWpuBq6WtYoFpAggvwPRofpuiZAzkT4Mjdv4iUWUQEGhfDMnpzrimCvnYpnP1WcdiFVLyVHhu6Pa8p9Qwkf"
+#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_2 "XCA1mNaW6MDQXJwVWpuBq6WtYoFpAggvwPRofpuiZAzkT4Mjdv4iUWUQEGhfDMnpzrimCvnYpnP1WcdiFVLyVHhu6Pa8p9Qwkf"
+//#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_3 "XCA1rU5hFV98QvysF3ByeZSPkt9wPyUxkSErBZADJjsHPMKnmCxKFH2H6aLy3oFbYaGkkYGCJcLF1ERWT5uQweEu8yZodwCtHc"
+//#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_4 "XCA1kk9q8H7JNe9aWXLYRpG2oqFQxLD7vTy8s3pPZprBVnLRQNAurnabEHsQCSAUyxC8nForSa2C39qAhtFt4f845ZSz2Xz5Mr"
+//#define NETWORK_DATA_NODE_PUBLIC_ADDRESS_5 "XCA1diBcGjRhBEdDkphu5oUTTvDHiSGjmZ7unCwBFgdpMiCQoF1BpMWP2E96iFWoWoD41npDcRUo51ih45We29Hd5XZsikzt71"
+#define NETWORK_DATA_NODE_IP_ADDRESS_1 "95.179.220.49"
+#define NETWORK_DATA_NODE_IP_ADDRESS_2 "104.238.191.105"
+//#define NETWORK_DATA_NODE_IP_ADDRESS_3 "europe2.xcash.foundation"
+//#define NETWORK_DATA_NODE_IP_ADDRESS_4 "europe3.xcash.foundation"
+//#define NETWORK_DATA_NODE_IP_ADDRESS_5 "asia1.xcash.foundation"
 #define INITIALIZE_NETWORK_DATA_NODES_LIST \
 network_data_nodes_list.network_data_nodes_public_address[0] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_1; \
 network_data_nodes_list.network_data_nodes_IP_address[0] = NETWORK_DATA_NODE_IP_ADDRESS_1; \
 network_data_nodes_list.network_data_nodes_public_address[1] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_2; \
-network_data_nodes_list.network_data_nodes_IP_address[1] = NETWORK_DATA_NODE_IP_ADDRESS_2; \
-network_data_nodes_list.network_data_nodes_public_address[2] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_3; \
+network_data_nodes_list.network_data_nodes_IP_address[1] = NETWORK_DATA_NODE_IP_ADDRESS_2; 
+/*network_data_nodes_list.network_data_nodes_public_address[2] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_3; \
 network_data_nodes_list.network_data_nodes_IP_address[2] = NETWORK_DATA_NODE_IP_ADDRESS_3; \
 network_data_nodes_list.network_data_nodes_public_address[3] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_4; \
 network_data_nodes_list.network_data_nodes_IP_address[3] = NETWORK_DATA_NODE_IP_ADDRESS_4; \
 network_data_nodes_list.network_data_nodes_public_address[4] = NETWORK_DATA_NODE_PUBLIC_ADDRESS_5; \
 network_data_nodes_list.network_data_nodes_IP_address[4] = NETWORK_DATA_NODE_IP_ADDRESS_5;
-
+*/
 /*// Network data nodes test
 #define NETWORK_DATA_NODES_AMOUNT 2 // The amount of network data nodes
 #define NETWORK_DATA_NODE_PUBLIC_ADDRESS_1 "XCA1pEWxj2q7gn7TJjae7JfsDhtnhydxsHhtADhDm4LbdE11rHVZqbX5MPGZ9tM7jQbDF4VKK89jSAqgL9Nxxjdh8RM5JEpZZP"
@@ -286,7 +286,7 @@ namespace config
   uint16_t const RPC_DEFAULT_PORT = 18281;
   uint16_t const ZMQ_RPC_DEFAULT_PORT = 18282;
   boost::uuids::uuid const NETWORK_ID = { {
-      0x10 ,0x10, 0x41, 0x53 , 0x48, 0x62 , 0x41, 0x65, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x90
+      0x10 ,0x10, 0x41, 0x66 , 0x66, 0x62 , 0x41, 0x65, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x90
     } };
   std::string const GENESIS_TX = "013c01ff0001b197bcc5c605029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101f1dde8d8d6c53e9d2e920d6e66432eaff6a85b2d25043fc29ef477b075b143df";
   uint32_t const GENESIS_NONCE = 10000;
