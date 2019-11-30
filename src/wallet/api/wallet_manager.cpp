@@ -53,6 +53,7 @@ Wallet *WalletManagerImpl::createWallet(const std::string &path, const std::stri
                                     const std::string &language, NetworkType nettype, uint64_t kdf_rounds)
 {
     WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    wallet->init(m_http_client.get_host() +":"+ m_http_client.get_port());
     wallet->create(path, password, language);
     return wallet;
 }
@@ -267,6 +268,7 @@ uint64_t WalletManagerImpl::networkDifficulty()
 
 double WalletManagerImpl::miningHashRate()
 {
+    /*
     cryptonote::COMMAND_RPC_MINING_STATUS::request mreq;
     cryptonote::COMMAND_RPC_MINING_STATUS::response mres;
 
@@ -276,6 +278,8 @@ double WalletManagerImpl::miningHashRate()
     if (!mres.active)
       return 0.0;
     return mres.speed;
+    */
+   return 333.222;
 }
 
 uint64_t WalletManagerImpl::blockTarget()

@@ -3180,6 +3180,9 @@ void wallet2::change_password(const std::string &filename, const epee::wipeable_
  */
 bool wallet2::load_keys(const std::string& keys_file_name, const epee::wipeable_string& password)
 {
+
+  LOG_PRINT_L0("---load_keys");
+
   rapidjson::Document json;
   wallet2::keys_file_data keys_file_data;
   std::string buf;
@@ -3188,15 +3191,20 @@ bool wallet2::load_keys(const std::string& keys_file_name, const epee::wipeable_
   THROW_WALLET_EXCEPTION_IF(!r, error::file_read_error, keys_file_name);
 
   // Decrypt the contents
+LOG_PRINT_L0("---parse_binary");
   r = ::serialization::parse_binary(buf, keys_file_data);
   THROW_WALLET_EXCEPTION_IF(!r, error::wallet_internal_error, "internal error: failed to deserialize \"" + keys_file_name + '\"');
   crypto::chacha_key key;
   crypto::generate_chacha_key(password.data(), password.size(), key, m_kdf_rounds);
+LOG_PRINT_L0("---generate_chacha_key");
+
   std::string account_data;
   account_data.resize(keys_file_data.account_data.size());
   crypto::chacha20(keys_file_data.account_data.data(), keys_file_data.account_data.size(), key, keys_file_data.iv, &account_data[0]);
   if (json.Parse(account_data.c_str()).HasParseError() || !json.IsObject())
     crypto::chacha8(keys_file_data.account_data.data(), keys_file_data.account_data.size(), key, keys_file_data.iv, &account_data[0]);
+
+LOG_PRINT_L0("---chacha");
 
   // The contents should be JSON if the wallet follows the new format.
   if (json.Parse(account_data.c_str()).HasParseError())
@@ -3403,7 +3411,8 @@ bool wallet2::load_keys(const std::string& keys_file_name, const epee::wipeable_
       THROW_WALLET_EXCEPTION(error::wallet_internal_error, "invalid password");
       return false;
   }
-
+  
+LOG_PRINT_L0("-load_t_from_binary");
   r = epee::serialization::load_t_from_binary(m_account, account_data);
   THROW_WALLET_EXCEPTION_IF(!r, error::invalid_password);
   if (m_key_device_type == hw::device::device_type::LEDGER) {
@@ -3563,7 +3572,11 @@ void wallet2::setup_new_blockchain()
   cryptonote::block b;
   generate_genesis(b);
   m_blockchain.push_back(get_block_hash(b));
+
+  MINFO("-get_outs_money");
   m_last_block_reward = cryptonote::get_outs_money_amount(b.miner_tx);
+
+  MINFO("-add_subaddress");
   add_subaddress_account(tr("Primary account"));
 }
 
@@ -3712,13 +3725,20 @@ void wallet2::generate(const std::string& wallet_, const epee::wipeable_string& 
   m_multisig_threshold = threshold;
   m_multisig_signers = multisig_signers;
   m_key_device_type = hw::device::device_type::SOFTWARE;
+
+  MINFO("---setup_keys");
   setup_keys(password);
 
+  MINFO("---create_keys_file");
   create_keys_file(wallet_, false, password, m_nettype != MAINNET || create_address_file);
+  
+  MINFO("---setup_new_blockchain");
   setup_new_blockchain();
 
-  if (!wallet_.empty())
+  if (!wallet_.empty()) {
+    MINFO("---store");
     store();
+  }
 }
 
 /*!

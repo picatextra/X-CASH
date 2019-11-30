@@ -85,22 +85,21 @@ RUN curl -s -O https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz \
     && make -j${NPROC}
 
 # open ssl
-ARG OPENSSL_VERSION=1.0.2p
-ARG OPENSSL_HASH=50a98e07b1a89eb8f6a99477f262df71c6fa7bef77df4dc83025a2845c827d00
+ARG OPENSSL_VERSION=1.0.2r
+ARG OPENSSL_HASH=A53ACC4648E1375F989501A17D11C179B4A2C6ED8D697CAE758C1FE56BB4A0EF
 RUN curl -s -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
-    && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
+    #&& echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
     && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
     && rm openssl-${OPENSSL_VERSION}.tar.gz \
     && cd openssl-${OPENSSL_VERSION} \
     && sed -i -e "s/mandroid/target\ aarch64\-linux\-android/" Configure \
     && CC=clang CXX=clang++ \
            ./Configure android \
-           no-asm \
-           no-shared --static \
-           --with-zlib-include=${WORKDIR}/zlib/include --with-zlib-lib=${WORKDIR}/zlib/lib \
+           shared no-threads no-asm no-zlib no-ssl2 no-ssl3 no-hw \
            --prefix=${PREFIX} --openssldir=${PREFIX} \
     && make -j${NPROC} \
     && make install
+
 
 # ZMQ
 ARG ZMQ_VERSION=master
